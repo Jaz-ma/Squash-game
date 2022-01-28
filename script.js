@@ -86,7 +86,7 @@ function ballmovement(){
 
     }
     //hit detection
-    if(pos.left<21 && ((pos.top>=rect.top && pos.top<=rect.bottom)||(pos.bottom>=rect.top && pos.bottom<=rect.bottom))){
+    if(pos.left<rect.right && ((pos.top>=rect.top && pos.top<=rect.bottom)||(pos.bottom>=rect.top && pos.bottom<=rect.bottom))){
         x=-1
         score++
        
