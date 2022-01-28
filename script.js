@@ -50,8 +50,8 @@ function toggle(){
     }
 }
 //ball animation function
-var x=-2 ;
-var y=88;
+var x=-1 ;
+var y=89;
 function ballmovement(){
     var xpos =pos.left
     var ypos =pos.top
@@ -61,15 +61,15 @@ function ballmovement(){
     pos = ball.getBoundingClientRect();
     //bounce off the botoom
     if(pos.top>286 ){
-        y=96
+        y=95
     }
     //bounce off the top
     if(pos.top<10){
-        y=88
+        y=89
     }
     //bounce off the right
     if(pos.left>gamerect.right-23){
-        x=6;
+        x=4;
     }
     // hit the left side (lost)
     if( pos.left<1){
@@ -87,7 +87,7 @@ function ballmovement(){
     }
     //hit detection
     if(pos.left<21 && ((pos.top>=rect.top && pos.top<=rect.bottom)||(pos.bottom>=rect.top && pos.bottom<=rect.bottom))){
-        x=-2
+        x=-1
         score++
        
         if( score>highscore){
