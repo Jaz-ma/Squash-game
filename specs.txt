@@ -1,0 +1,11 @@
+X :2
+y :92 
+the limits
+
+x-right : 781
+
+x-left : 0
+
+y-down :286.75
+
+y-top : 9.75

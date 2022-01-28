@@ -1,0 +1,47 @@
+body{
+    margin: 0;
+    box-sizing: border-box;
+}
+#game{
+    position: relative;
+    top: 8px; 
+    height: 299px;
+    width: 50rem;
+    border: solid 2px black;
+   
+}
+#player{
+    position: relative;
+    height: 5rem;
+    width: 5px;
+    border: black solid 1px;
+    background-color: black;
+    top: 40%;
+    left: 2%;
+}
+#ball{
+    position: relative;
+    height: 20px;
+    width: 20px;
+    border: black solid 1px;
+    border-radius: 50%;
+    background:black;
+    top: 25%;
+    left: 50%;
+}
+h1{
+    margin: 0;
+    margin-top: 1rem;
+}
+#score{
+    margin-top: 0.5rem;
+    margin-left: 2rem;
+    font-size: 2rem;   
+    
+}
+#highscore{
+    margin-top: 0.5rem;
+    margin-left: 2rem;
+    font-size: 2rem;   
+    
+}
