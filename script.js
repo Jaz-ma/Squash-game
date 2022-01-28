@@ -1,34 +1,24 @@
+//intialising variables
 const player =document.getElementById('player')
 const ball = document.getElementById('ball')
+var game= document.getElementById('game')
+var gamerect = game.getBoundingClientRect();
 var rect = player.getBoundingClientRect();
 var pos = ball.getBoundingClientRect();
 console.log(rect.top, rect.right, rect.bottom, rect.left);
+console.log(gamerect.top, gamerect.right, gamerect.bottom, gamerect.left);
+console.log(gamerect)
 var Vup=15
 var Vdown=5
 var V=Vdown
 var score = 0;
-var highscore =localStorage.getItem("highscore")
+var highscore =localStorage.getItem("topscore")
 if(highscore===null){
     document.getElementById("highscore").innerHTML="0"
 }
 else{
     document.getElementById("highscore").innerHTML=highscore
-
-}function moveup(){
-    if( rect.top > 10){
-        player.style.top= rect.top -Vup +'px'
-        rect = player.getBoundingClientRect();
-        
-        console.log(rect)
-    }
-}
-function movedown(){
-    if( rect.top <225){
-        player.style.top= rect.top - Vdown + 'px'
-        rect = player.getBoundingClientRect();
-        
-        console.log(rect)
-    }
+//player animation function
 }
 function playermovement(){
     player.style.top= rect.top -V +'px'
@@ -47,6 +37,7 @@ function playermovement(){
        
     }
 }
+//player control function
 function toggle(){
    switch(V){
 
@@ -58,8 +49,9 @@ function toggle(){
         break;
     }
 }
-var x=-1 ;
-var y=89;
+//ball animation function
+var x=-2 ;
+var y=88;
 function ballmovement(){
     var xpos =pos.left
     var ypos =pos.top
@@ -67,35 +59,40 @@ function ballmovement(){
     ball.style.left = xpos - x + 'px'
     ball.style.top  = ypos - y + 'px'
     pos = ball.getBoundingClientRect();
+    //bounce off the botoom
     if(pos.top>286 ){
-        y=95
+        y=96
     }
+    //bounce off the top
     if(pos.top<10){
-        y=89
+        y=88
     }
-    if(pos.left>780){
-        x=4;
+    //bounce off the right
+    if(pos.left>gamerect.right-23){
+        x=6;
     }
+    // hit the left side (lost)
     if( pos.left<1){
         clearInterval(id)
         clearInterval(ID)
         if( score>=highscore){
-            localStorage.setItem("highscore",score)
+            localStorage.setItem("topscore",score)
         }
-        highscore = localStorage.getItem("highscore")
+        highscore = localStorage.getItem("topscore")
         document.getElementById("highscore").innerHTML=highscore
         if(confirm("You Lose!\n Press Ok to replay.")){           
             location.reload()
         }
 
     }
-    if(pos.left<24 && ((pos.top>=rect.top && pos.top<=rect.bottom)||(pos.bottom>=rect.top && pos.bottom<=rect.bottom))){
-        x=-1
+    //hit detection
+    if(pos.left<21 && ((pos.top>=rect.top && pos.top<=rect.bottom)||(pos.bottom>=rect.top && pos.bottom<=rect.bottom))){
+        x=-2
         score++
        
         if( score>highscore){
-            localStorage.setItem("highscore",score)
-            highscore=localStorage.getItem('highscore')
+            localStorage.setItem("topscore",score)
+            highscore=localStorage.getItem('topscore')
             document.getElementById("highscore").innerHTML=highscore
         }
         document.getElementById("score").innerHTML=score
@@ -104,9 +101,7 @@ function ballmovement(){
     console.log(pos);
     
 }
-function position(){
-    pos = ball.getBoundingClientRect();
-}
+// calling the animations
 var id=setInterval(ballmovement,10);
 var ID =setInterval(playermovement,20)
 
@@ -140,7 +135,7 @@ var ID =setInterval(playermovement,20)
 
 
 
-
+//---------------------------For Debugging---------------------------------
 
 function ballmovementleft(){
     ball.style.left = pos.left - 3 + 'px'
@@ -162,7 +157,22 @@ function ballmovementup(){
     pos = ball.getBoundingClientRect();
     console.log(pos);
 }
-
+function moveup(){
+    if( rect.top > 10){
+        player.style.top= rect.top -Vup +'px'
+        rect = player.getBoundingClientRect();
+        
+        console.log(rect)
+    }
+}
+function movedown(){
+    if( rect.top <225){
+        player.style.top= rect.top - Vdown + 'px'
+        rect = player.getBoundingClientRect();
+        
+        console.log(rect)
+    }
+}
 document.onkeydown = function(e) {
     switch (e.keyCode) {
         case 90:
