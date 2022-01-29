@@ -102,12 +102,12 @@ function ballmovement(){
     
 }
 // calling the animations
-game.addEventListener("click", myFunction,true);
+document.addEventListener("click", myFunction,true);
 var ID ,id
 function myFunction() {
      id=setInterval(ballmovement,10);
      ID =setInterval(playermovement,20)
-    game.removeEventListener("click", myFunction, true);
+    document.removeEventListener("click", myFunction, true);
     
 }
 
