@@ -9,10 +9,7 @@ body{
     height: 299px;
     width: 75vw;
     border: solid 2px black;
-   background-image: url('kao.jpg');
-   background-repeat:no-repeat;
-background-size:contain;
-background-position:center;
+   
 }
  h2{
     position: relative;
